@@ -26,20 +26,20 @@ middleware组件用于PHP框架中间件管理
 	//应用中间件	
 	'web' => [
 		'database_query' => [
-				\middleware\web\Dbquery::class,
+			\middleware\web\Dbquery::class,
 		],
 		'database_execute' => [
-				\middleware\web\Dbexecute::class,
+			\middleware\web\Dbexecute::class,
 		],		
 	],
 	//控制器中间件	
 	'controller' => [
-			'check' => [
-					\middleware\controller\Check::class,					
-			],
-			'auth' => [
-					\middleware\controller\Auth::class,
-			],	
+		'check' => [
+			\middleware\controller\Check::class,					
+		],
+		'auth' => [
+			\middleware\controller\Auth::class,
+		],	
 	],
 	//获取当前控制器方法的方法
 	'get_action' => '\willphp\route\Route::getAction', 
@@ -54,7 +54,7 @@ middleware组件用于PHP框架中间件管理
 		//执行中间件
 		public function run($next, $params = []){
 			echo "Auth中间件执行了";
-	        $next();
+	        	$next();
 		}
 	}
 
