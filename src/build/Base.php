@@ -65,7 +65,7 @@ class Base {
 	 * @return bool
 	 */
 	public function globals() {
-		$middleware = array_unique(Config::get('middleware.global'));
+		$middleware = array_unique(Config::get('middleware.global', []));
 		return $this->exe($middleware);
 	}
 	/**
@@ -104,7 +104,7 @@ class Base {
 	 */
 	public function set($name, $mode = []) {
 		$exe = []; //执行的控制器中间件
-		$middleware = Config::get('middleware.controller.'.$name); //当前控制器中间件
+		$middleware = Config::get('middleware.controller.'.$name, []); //当前控制器中间件
 		if (!$mode) {
 			$exe = $middleware;
 		} else {
@@ -119,7 +119,7 @@ class Base {
 					$exe = array_merge($exe, $middleware);
 				}
 			}
-		}
+		}		
 		return $this->exe(array_unique($exe));
 	}	
 }
