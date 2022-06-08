@@ -1,27 +1,26 @@
-# 中间件组件
+##中间件组件
+
 middleware组件用于PHP框架中间件管理
 
-#开始使用
+###安装组件
 
-####安装组件
 使用 composer 命令进行安装或下载源代码使用(依赖willphp/config组件)。
 
     composer require willphp/middleware
 
-> WillPHP 框架已经内置此组件，无需再安装。
+>WillPHP框架已经内置此组件，无需再安装。
 
-####调用示例
+###调用示例
 
     \willphp\middleware\Middleware::globals(); //执行全局中间件
 
-####配置中间件
+###配置中间件
 
 `config/middleware.php`配置文件设置如下：
 	
 	//全局中间件	
 	'global' => [			
-		\middleware\Boot::class,		
-		\middleware\Filter::class,
+		\middleware\Boot::class,
 	],
 	//应用中间件	
 	'web' => [
@@ -45,7 +44,7 @@ middleware组件用于PHP框架中间件管理
 	'get_action' => '\willphp\route\Route::getAction', 
 	
 
-####创建中间件
+###创建中间件
 
 如在对应命名空间的文件目录中创建Auth.php中间件：
 
@@ -54,11 +53,11 @@ middleware组件用于PHP框架中间件管理
 		//执行中间件
 		public function run($next, $params = []){
 			echo "Auth中间件执行了";
-	        	$next();
+	        $next();
 		}
 	}
 
-####应用中间件
+###应用中间件
 
 执行应用中间件
 
@@ -68,7 +67,7 @@ middleware组件用于PHP框架中间件管理
 
     Middleware::add('test', [\middleware\web\Test::class,]);  //第二个参数为数组
 
-####控制器中间件
+###控制器中间件
 
 在控制器的 __construct 方法或之前执行以下代码都可触发控制器中间件运行：
 
@@ -98,6 +97,3 @@ middleware组件用于PHP框架中间件管理
 	        echo '执行auth';
 	    }
 	}
-
-
-
